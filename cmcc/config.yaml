@@ -1,0 +1,47 @@
+# 运行参数（通过 run_detection.sh 传入）
+# mode, model_type, monthid, province 等参数由命令行参数指定
+# 默认值在 run_detection.sh 中定义
+
+load_model: "1"
+load_graph_result: "1"
+load_tv_result: "1"
+
+data_process:
+  hive_dir: "hdfs://ns2/user/bdoc/9420/hive/gxtp/"
+  local_dir: "./data/"
+  user_number_table_name: "ty_m_unreal_person_user_number_data_filter"
+  call_table_name: "ty_m_unreal_person_call_data_filter"
+  local_user_number_table_name: "user.txt"
+  local_call_table_name: "call.txt"
+  data_delim: "€€"
+  user_features : ["MSISDN", "USER_ID", "NEW_RCN_ID", "RCN_DURA", "IDTY_NBR", "STATIS_YMD", "PROV_ID"]
+  call_features: ["MSISDN", "OPP_MSISDN"]
+
+model:
+  jar_files: "hdfs://ns2/user/yx_0_gxtp_101/graph_processing/jars/graphframes-0.6.0-spark2.2-s_2.11.jar,hdfs://ns2/user/yx_0_gxtp_101/graph_processing/jars/scala-logging-api_2.11-2.0.3.jar,hdfs://ns2/user/yx_0_gxtp_101/graph_processing/jars/scala-logging-slf4j_2.11-2.0.4.jar,hdfs://ns2/user/yx_0_gxtp_101/graph_processing/jars/scala-reflect-2.11.8.jar"
+  tv_user_feature_table: "tv_unreal_person_user_total_fea"
+  local_tv_user_feature_table: "tv.txt"
+  user_ori_fea_delim: "€€"
+  ori_fea_lens: 34
+
+output:
+  graph_model_save_path: "/data/ssd/yuandeyu/unreal_person/save_models/"
+  local_graph_model_save_path: "./save_models/"
+  nx_graph_model_name: "graph_nx_${province}_${monthid}.pkl"
+  gf_graph_model_name: "graph_gf_${province}_${monthid}.pkl"
+  msisdn_user_map_path: "msisdn_user_map_${province}_${monthid}.pkl"
+  user_feature_file: "msisdn_user_feature_${province}_${monthid}.pkl"
+  call_feature_file: "msisdn_call_feature__${province}_${monthid}_${index}.pkl"
+  inter_save_dir: "file:///home/yuandeyu/Code/unreal_person/results/inter/${province}/"
+  local_inter_save_dir: "./results/inter/${province}/"
+  graph_result_table_name: "graph_result_${province}_${monthid}.csv"
+  tv_result_table_name: "tv_result_${province}_${monthid}.csv"
+  hdfs_result_save_dir: "hdfs://ns2/user/yx_0_gxtp_101/ydy/unreal_person/${province}/"
+  local_result_save_dir: "./results/${province}/"
+  result_table_name: "unreal_person_${province}_${monthid}.csv"
+
+global:
+  pyspark_python: "/home/yuandeyu/python/lib/python3.6/python"
+  pyspark_driver_python: "/home/yuandeyu/python/lib/python3.6/python"
+  local_pyspark_python: "/Users/liuyihua/Desktop/anti_fraud/UnrealPerson/venv/bin/python3"
+  local_pyspark_driver_python: "/Users/liuyihua/Desktop/anti_fraud/UnrealPerson/venv/bin/python3"
