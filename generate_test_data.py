@@ -20,7 +20,7 @@ class Config:
     """数据生成配置"""
 
     # 数据规模配置
-    TOTAL_USERS = 10              # 总用户数（建议：10000-1000000）
+    TOTAL_USERS = 100              # 总用户数（建议：10000-1000000）
     CALLS_PER_USER_PER_MONTH = 8     # 每个用户每月平均通话次数（建议：5-10）
 
     # 用户画像比例
@@ -414,7 +414,8 @@ class DataGenerator:
                 'IDCARD_BIRTH_AREA', 'IDCARD_BIRTH_DATE', 'SAME_IDCARD_MSISDN_CNT',
                 'NANL', 'OCPN_CODE', 'EDUCAT_DEGREE_CODE', 'USER_TYP', 'BUSI_TYP',
                 'PAY_TYP', 'BRAND_ID', 'DATA_SIM_AND_M2M_USER_FLAG', 'IS_M2M_ID_TD_SPECI',
-                'MSISDN', 'IMSI', 'IS_RNAME', 'RCN_DATE', 'RCN_CHNL_ID', 'RCN_CHNL_TYP',
+                'MSISDN', 'IMSI', 'IS_RNAME', 'RCN_DATE', 'NEW_RCN_ID', 'RCN_DURA',
+                'RCN_CHNL_ID', 'RCN_CHNL_TYP',
                 'RCN_MODE', 'IS_CAMP_USER', 'IS_CAMP_AREA_USER', 'BELO_CAMP_ID',
                 'IS_GROUP_USER', 'MEMB_TYP', 'IS_GROUP_KEY_INDV', 'BECOME_GROUP_USER_MEMB_TM',
                 'GROUP_INDUS_TYP_CODE', 'GROUP_USER_UNIPAY_FLAG', 'BELO_GROUP_CUST_ID',
@@ -467,6 +468,8 @@ class DataGenerator:
                     generate_md5(f"IMSI{random.randint(100000000000000, 999999999999999)}"),  # IMSI
                     '1',                   # IS_RNAME (实名)
                     user.rcn_date,         # RCN_DATE
+                    '1' if user.is_new_user() else '0',  # NEW_RCN_ID
+                    user.rcn_dura,         # RCN_DURA
                     random.randint(1, 100), # RCN_CHNL_ID
                     random.randint(1, 10), # RCN_CHNL_TYP
                     '1',                   # RCN_MODE

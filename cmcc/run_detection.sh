@@ -152,9 +152,10 @@ echo ""
 # 解析运行参数
 # ============================================
 
-# 默认参数（这些是唯一的配置来源）
+# 默认参数
+# 这个参数无实际作用，仅用来配置生成目录
 PROVINCE="jiangsu"
-MONTHID="202308"        # 改为与 generate_test_data.py 生成的月份一致
+MONTHID="202510"        # 改为与 generate_test_data.py 生成的月份一致
 MODE="local"
 MODEL_TYPE="nx"
 ONLY_GRAPH="0"

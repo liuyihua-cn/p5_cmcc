@@ -112,6 +112,8 @@ CREATE TABLE ty_m_unreal_person_user_number_data_filter (
     IMSI VARCHAR(32),                          -- IMSI号
     IS_RNAME VARCHAR(2),                       -- 是否实名
     RCN_DATE VARCHAR(8),                       -- 入网日期
+    NEW_RCN_ID VARCHAR(2),                     -- 是否新入网用户（1表示是，0表示否）
+    RCN_DURA INT,                              -- 入网时长（月）
     RCN_CHNL_ID VARCHAR(10),                   -- 入网渠道标识
     RCN_CHNL_TYP VARCHAR(10),                  -- 入网渠道类型
     RCN_MODE VARCHAR(10),                      -- 入网方式

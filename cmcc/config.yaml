@@ -8,7 +8,8 @@ load_tv_result: "1"
 
 data_process:
   hive_dir: "hdfs://ns2/user/bdoc/9420/hive/gxtp/"
-  local_dir: "./data/"
+  # 这里修改实际的处理后的文件地址
+  local_dir: "/Users/liuyihua/Desktop/keti5/filter_data/"
   user_number_table_name: "ty_m_unreal_person_user_number_data_filter"
   call_table_name: "ty_m_unreal_person_call_data_filter"
   local_user_number_table_name: "user.txt"

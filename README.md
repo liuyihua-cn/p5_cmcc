@@ -117,7 +117,9 @@
 | MSISDN                     | 移动号码               | string   | tv和user                                              |
 | IMSI                       | IMSI号                 | string   |                                                       |
 | IS_RNAME                   | 是否实名               | string   |                                                       |
-| RCN_DATE                   | 入网日期               | string   | 用于产生user的NEW_RCN_ID(1表示是新入网用户)和RCN_DURA |
+| RCN_DATE                   | 入网日期               | string   | tv                                                     |
+| NEW_RCN_ID                 | 是否新入网用户         | string   | user（1表示是新入网用户，0表示非新入网用户）          |
+| RCN_DURA                   | 入网时长（月）         | int      | user                                                   |
 | RCN_CHNL_ID                | 入网渠道标识           | string   |                                                       |
 | RCN_CHNL_TYP               | 入网渠道类型           | string   | tv                                                    |
 | RCN_MODE                   | 入网方式               | string   |                                                       |

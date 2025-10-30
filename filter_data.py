@@ -203,23 +203,18 @@ class DataFilter:
             for row in reader:
                 msisdn = safe_get(row, 'MSISDN')
                 user_id = safe_get(row, 'USER_ID')
-                rcn_date = safe_get(row, 'RCN_DATE')
-                statis_ymd = safe_get(row, 'STATIS_YMD')
+                new_rcn_id = safe_get(row, 'NEW_RCN_ID')
+                rcn_dura = safe_get(row, 'RCN_DURA')
                 idty_code = safe_get(row, 'IDTY_CODE')
+                statis_ymd = safe_get(row, 'STATIS_YMD')
                 prov_id = safe_get(row, 'PROV_ID')
-
-                # 计算入网时长（月）
-                rcn_dura = calculate_months_diff(rcn_date, statis_ymd)
-
-                # 判断是否新入网用户（≤2周，约0.5个月）
-                new_rcn_id = '1' if rcn_dura <= 0.5 else '0'
 
                 # 写入数据行
                 output_row = [
                     msisdn,
                     user_id,
                     new_rcn_id,
-                    str(rcn_dura),
+                    rcn_dura,
                     idty_code,  # IDTY_CODE映射为IDTY_NBR
                     statis_ymd,
                     prov_id
